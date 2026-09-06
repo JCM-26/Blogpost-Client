@@ -16,7 +16,8 @@ async function handleSubmit() {
   submitting.value = true
   try {
     const { data } = await login({ email: email.value, password: password.value })
-    setSession({ token: data.token, name: data.name || data.user?.name })
+    // setSession({ token: data.token, name: data.name || data.user?.name })
+    setSession({ token: data.access })
     notifySuccess('Welcome back.')
     router.push(route.query.redirect || { name: 'posts' })
   } catch (err) {

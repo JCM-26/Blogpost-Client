@@ -5,6 +5,8 @@ import { notifySuccess } from './utils/notyf'
 
 const router = useRouter()
 
+console.log('username ' + authStore.username);
+
 function logout() {
   clearSession()
   notifySuccess('Signed out.')
@@ -39,7 +41,7 @@ function logout() {
           <router-link to="/register" class="btn btn--small">Sign up</router-link>
         </template>
         <span v-else class="nav__user">
-          <span class="muted">{{ authStore.name || 'you' }}</span>
+          <span class="muted">{{ authStore.username || 'you' }}</span>
           <button class="link-button" @click="logout">Sign out</button>
         </span>
       </nav>

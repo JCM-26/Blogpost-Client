@@ -2,22 +2,22 @@ import { reactive, readonly } from 'vue'
 
 const state = reactive({
   token: localStorage.getItem('token') || null,
-  name: localStorage.getItem('name') || null,
+  username: localStorage.getItem('username') || null,
 })
 
-function setSession({ token, name }) {
+function setSession({ token, username }) {
   state.token = token
-  state.name = name || null
+  state.username = username || null
 
   localStorage.setItem('token', token)
-  if (name) localStorage.setItem('name', name)
+  if (state.username) localStorage.setItem('username', state.username)
 }
 
 function clearSession() {
   state.token = null
-  state.name = null
+  state.username = null
   localStorage.removeItem('token')
-  localStorage.removeItem('name')
+  localStorage.removeItem('username')
 }
 
 function isLoggedIn() {

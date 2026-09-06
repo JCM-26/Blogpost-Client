@@ -16,10 +16,13 @@ async function handleSubmit() {
   submitting.value = true
   try {
     const { data } = await register({
-      name: name.value,
+      username: name.value,
       email: email.value,
       password: password.value,
     })
+
+  notifySuccess(`Account created${data.user?.username ? `, ${data.user.username}` : ''} — log in to continue.`)
+  router.push({ name: 'login' })
 
     // If the API logs the user in on registration (returns a token),
     // carry them straight into the app. Otherwise send them to log in.
