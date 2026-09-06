@@ -13,6 +13,7 @@ const isEditing = computed(() => Boolean(props.id))
 
 const title = ref('')
 const content = ref('')
+const information = ref('')
 const loading = ref(isEditing.value)
 const saving = ref(false)
 const error = ref('')
@@ -25,6 +26,7 @@ onMounted(async () => {
     const post = data.post || data
     title.value = post.title
     content.value = post.content
+    information.value = post.information || ''
   } catch (err) {
     notifyError(err, 'Could not load this post.')
     router.push({ name: 'my-posts' })
@@ -43,7 +45,11 @@ async function handleSubmit() {
 
   saving.value = true
   try {
-    const payload = { title: title.value.trim(), content: content.value.trim() }
+    const payload = {
+      title: title.value.trim(),
+      content: content.value.trim(),
+      information: information.value.trim(),
+    }
 
     if (isEditing.value) {
       await updatePost(props.id, payload)
@@ -81,6 +87,17 @@ async function handleSubmit() {
           v-model="content"
           placeholder="Start writing…"
         ></textarea>
+      </div>
+
+      <div class="field">
+        <label for="information">Information <span class="muted">(optional, short summary)</span></label>
+        <input
+          id="information"
+          v-model="information"
+          type="text"
+          maxlength="300"
+          placeholder="A quick blurb about this post"
+        />
       </div>
 
       <p v-if="error" class="form-error">{{ error }}</p>
