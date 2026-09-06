@@ -90,13 +90,13 @@ async function handleSubmit() {
       </div>
 
       <div class="field">
-        <label for="information">Information <span class="muted">(optional, short summary)</span></label>
+        <label for="information">Information</span></label>
         <input
           id="information"
           v-model="information"
           type="text"
           maxlength="300"
-          placeholder="A quick blurb about this post"
+          placeholder="optional, short summary"
         />
       </div>
 
