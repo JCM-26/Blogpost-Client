@@ -17,11 +17,11 @@ export function getMyPosts() {
   return http.get('/posts/getMyPosts')
 }
 
-export function addPost({ title, content }) {
+export function addPost({ title, content, information }) {
   return http.post('/posts/', { title, content, information })
 }
 
-export function updatePost(id, { title, content }) {
+export function updatePost(id, { title, content, information }) {
   return http.patch(`/posts/${id}`, { title, content, information })
 }
 
