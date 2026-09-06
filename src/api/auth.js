@@ -7,10 +7,9 @@ import http from './http'
 // (POST /users/register, POST /users/login). If the real API differs,
 // this file is the only place that needs to change.
 
-export function register({ name, email, password }) {
-  return http.post('/users/register', { name, email, password })
+export function register({ username, email, password }) {
+  return http.post('/users/register', { username, email, password })
 }
-
 export function login({ email, password }) {
   return http.post('/users/login', { email, password })
 }
