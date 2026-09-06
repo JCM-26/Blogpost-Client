@@ -27,8 +27,8 @@ function formatDate(value) {
       <h2 class="post-card__title">{{ post.title }}</h2>
     </router-link>
     <p class="post-card__meta muted">
-      <span v-if="post.author?.name">{{ post.author.name }}</span>
-      <span v-if="post.author?.name && post.createdAt"> · </span>
+      <span v-if="post.author?.username">{{ post.author.username }}</span>
+      <span v-if="post.author?.username && post.createdAt"> · </span>
       <span v-if="post.createdAt">{{ formatDate(post.createdAt) }}</span>
     </p>
     <p class="post-card__excerpt">{{ excerpt(post.content) }}</p>
