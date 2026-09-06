@@ -14,14 +14,27 @@ const submitting = ref(false)
 
 async function handleSubmit() {
   submitting.value = true
+
   try {
-    const { data } = await login({ email: email.value, password: password.value })
-    // setSession({ token: data.token, name: data.name || data.user?.name })
-    setSession({ token: data.access })
+    const { data } = await login({
+      email: email.value,
+      password: password.value,
+    })
+
+    // The API returns the JWT as "access".
+    // The username is stored inside the JWT.
+    setSession({
+      token: data.access,
+    })
+
     notifySuccess('Welcome back.')
+
     router.push(route.query.redirect || { name: 'posts' })
   } catch (err) {
-    notifyError(err, 'Could not log in. Check your email and password.')
+    notifyError(
+      err,
+      'Could not log in. Check your email and password.'
+    )
   } finally {
     submitting.value = false
   }
@@ -35,7 +48,13 @@ async function handleSubmit() {
     <form @submit.prevent="handleSubmit">
       <div class="field">
         <label for="email">Email</label>
-        <input id="email" v-model="email" type="email" required autocomplete="email" />
+        <input
+          id="email"
+          v-model="email"
+          type="email"
+          required
+          autocomplete="email"
+        />
       </div>
 
       <div class="field">
@@ -49,13 +68,22 @@ async function handleSubmit() {
         />
       </div>
 
-      <button type="submit" class="btn" style="width: 100%" :disabled="submitting">
+      <button
+        type="submit"
+        class="btn"
+        style="width: 100%"
+        :disabled="submitting"
+      >
         {{ submitting ? 'Signing in…' : 'Log in' }}
       </button>
     </form>
 
     <p class="muted" style="margin-top: 1.25rem">
-      New here? <router-link to="/register">Create an account</router-link>
+      New here?
+      <router-link to="/register">
+        Create an account
+      </router-link>
     </p>
   </main>
 </template>
+
