@@ -31,6 +31,7 @@ function formatDate(value) {
       <span v-if="post.author?.username && post.createdAt"> · </span>
       <span v-if="post.createdAt">{{ formatDate(post.createdAt) }}</span>
     </p>
+    <p v-if="post.information" class="post-card__info">{{ post.information }}</p>
     <p class="post-card__excerpt">{{ excerpt(post.content) }}</p>
     <router-link
       :to="{ name: 'post-detail', params: { id: post._id } }"
@@ -59,6 +60,13 @@ function formatDate(value) {
 .post-card__meta {
   font-size: 0.85rem;
   margin-bottom: 0.75rem;
+}
+
+.post-card__info {
+  font-size: 0.95rem;
+  font-style: italic;
+  color: var(--ink-soft);
+  margin-bottom: 0.5rem;
 }
 
 .post-card__excerpt {
