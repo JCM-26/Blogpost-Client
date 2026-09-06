@@ -18,13 +18,13 @@ export function getMyPosts() {
 }
 
 export function addPost({ title, content }) {
-  return http.post('/posts/addPost', { title, content })
+  return http.post('/posts/', { title, content })
 }
 
 export function updatePost(id, { title, content }) {
-  return http.patch(`/posts/updatePost/${id}`, { title, content })
+  return http.patch(`/posts/${id}`, { title, content })
 }
 
 export function deletePost(id) {
-  return http.delete(`/posts/deletePost/${id}`)
+  return http.delete(`/posts/${id}`)
 }
