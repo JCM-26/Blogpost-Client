@@ -10,7 +10,7 @@ export function getAllPosts() {
 }
 
 export function getPost(id) {
-  return http.get(`/posts/getPost/${id}`)
+  return http.get(`/posts/${id}`)
 }
 
 export function getMyPosts() {
