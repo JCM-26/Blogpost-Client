@@ -1,0 +1,22 @@
+{
+  "name": "longhand-blog-client",
+  "version": "1.0.0",
+  "description": "A small Vue 3 (Vite) client for the blogpostAPI REST API",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "axios": "^1.7.7",
+    "notyf": "^3.10.0",
+    "vue": "^3.4.29",
+    "vue-router": "^4.4.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.0.5",
+    "vite": "^5.3.1"
+  }
+}
