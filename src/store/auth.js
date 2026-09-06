@@ -2,9 +2,13 @@ import { reactive, readonly } from 'vue'
 
 function decodeJwtPayload(token) {
   try {
-    const base64 = token.split('.')[1]
+    let base64 = token.split('.')[1]
       .replace(/-/g, '+')
       .replace(/_/g, '/')
+
+    while (base64.length % 4) {
+      base64 += '='
+    }
 
     const json = decodeURIComponent(
       atob(base64)
@@ -18,6 +22,11 @@ function decodeJwtPayload(token) {
     return null
   }
 }
+
+
+
+
+
 
 const savedToken = localStorage.getItem('token')
 
