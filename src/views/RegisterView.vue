@@ -48,7 +48,7 @@ async function handleSubmit() {
 
     <form @submit.prevent="handleSubmit">
       <div class="field">
-        <label for="name">Name</label>
+        <label for="name">Username</label>
         <input id="name" v-model="name" type="text" required autocomplete="name" />
       </div>
 
